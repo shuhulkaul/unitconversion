@@ -1,0 +1,42 @@
+.heading {
+  padding-top: 2px;
+  padding-bottom: 5px;
+  height: 100%;
+  margin-top: 0;
+  background-color: #fabea7;
+}
+
+.heading-text {
+  letter-spacing: 10px;
+  font-weight: bolder;
+  margin-bottom: 10px;
+  font-size: 180%;
+  height: 100%;
+
+}
+
+.wrapper{
+    margin-top: 2.5vw;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+
+.subheading-text {
+  color: #00334e;
+  letter-spacing: 10px;
+  margin: 0;
+  margin-bottom:10px;
+  height: 100%;
+  font-weight: 400;
+  font-size: small;
+}
+
+.container {
+  text-align: center;
+  height: 100%;
+  margin-top: 0;
+}
