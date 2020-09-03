@@ -114,10 +114,10 @@ function Home() {
                     //     label: classes.label, // class name, e.g. `classes-nesting-label-x`
                     //   }}
                     name="num"
-                    onChange={e => setNum(e.target.value)}
+                    value={num}
+                    onChange={e => setNum(e.target.value.replace(/\s/g, ''))}
                     variant="outlined"
                 />
-
                 {num === '' ? <h1></h1> : isNaN(num) ? <ErrorScreen /> : <Conversions />}
             </div>
             <Modal
