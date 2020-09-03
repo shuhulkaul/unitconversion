@@ -114,7 +114,7 @@ function Home() {
                     //     label: classes.label, // class name, e.g. `classes-nesting-label-x`
                     //   }}
                     name="num"
-                    onChange={e => setNum(e.target.value)}
+                    onChange={e => setNum(e.target.value.trim())}
                     variant="outlined"
                 />
 
