@@ -4,7 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-
+import Units from './Units.js';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,20 +16,22 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SelectedListItem() {
+export default function Conversions(props) {
     const classes = useStyles();
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
-
+    const [showUnits, showUnitState] = React.useState('');
     const handleListItemClick = (event, index) => {
-        setSelectedIndex(index);
+        // setSelectedIndex(index);
+       showUnitState(index);
     };
+    const goBack = (event, index) => {
+        showUnitState('');;
+      };
 
     return (
-        <div className={classes.root}>
+        showUnits === '' ? <div className={classes.root}>
             <List component="nav">
                 <ListItem
                     button
-                    selected={selectedIndex === 0}
                     onClick={(event) => handleListItemClick(event, 0)}
                 >
                     <ListItemIcon>
@@ -40,7 +42,6 @@ export default function SelectedListItem() {
 
                 <ListItem
                     button
-                    selected={selectedIndex === 1}
                     onClick={(event) => handleListItemClick(event, 1)}
                 >
                     <ListItemIcon>
@@ -51,7 +52,6 @@ export default function SelectedListItem() {
 
                 <ListItem
                     button
-                    selected={selectedIndex === 2}
                     onClick={(event) => handleListItemClick(event, 2)}
                 >
                     <ListItemIcon>
@@ -62,7 +62,6 @@ export default function SelectedListItem() {
 
                 <ListItem
                     button
-                    selected={selectedIndex === 3}
                     onClick={(event) => handleListItemClick(event, 3)}
                 >
                     <ListItemIcon>
@@ -73,7 +72,6 @@ export default function SelectedListItem() {
 
                 <ListItem
                     button
-                    selected={selectedIndex === 4}
                     onClick={(event) => handleListItemClick(event, 4)}
                 >
                     <ListItemIcon>
@@ -84,7 +82,6 @@ export default function SelectedListItem() {
 
                 <ListItem
                     button
-                    selected={selectedIndex === 5}
                     onClick={(event) => handleListItemClick(event, 5)}
                 >
                     <ListItemIcon>
@@ -95,7 +92,6 @@ export default function SelectedListItem() {
 
                 <ListItem
                     button
-                    selected={selectedIndex === 6}
                     onClick={(event) => handleListItemClick(event, 6)}
                 >
                     <ListItemIcon>
@@ -106,7 +102,6 @@ export default function SelectedListItem() {
 
                 <ListItem
                     button
-                    selected={selectedIndex === 7}
                     onClick={(event) => handleListItemClick(event, 7)}
                 >
                     <ListItemIcon>
@@ -117,7 +112,6 @@ export default function SelectedListItem() {
 
                 <ListItem
                     button
-                    selected={selectedIndex === 8}
                     onClick={(event) => handleListItemClick(event, 8)}
                 >
                     <ListItemIcon>
@@ -128,7 +122,6 @@ export default function SelectedListItem() {
 
                 <ListItem
                     button
-                    selected={selectedIndex === 9}
                     onClick={(event) => handleListItemClick(event, 9)}
                 >
                     <ListItemIcon>
@@ -139,7 +132,6 @@ export default function SelectedListItem() {
 
                 <ListItem
                     button
-                    selected={selectedIndex === 10}
                     onClick={(event) => handleListItemClick(event, 10)}
                 >
                     <ListItemIcon>
@@ -150,7 +142,6 @@ export default function SelectedListItem() {
 
                 <ListItem
                     button
-                    selected={selectedIndex === 11}
                     onClick={(event) => handleListItemClick(event, 11)}
                 >
                     <ListItemIcon>
@@ -160,6 +151,6 @@ export default function SelectedListItem() {
                 </ListItem>
             </List>
 
-        </div>
+        </div>: <Units numberT={props.number} index={showUnits} goBack={goBack}/>
     );
 }

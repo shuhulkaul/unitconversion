@@ -97,15 +97,15 @@ function Home() {
     // alert(num);
     return (
 
-        <div class="container">
-            <div class="heading">
-                <p class="heading-text">CONVERT</p>
-                <p class="subheading-text">UNITS ONLY</p>
+        <div className="container">
+            <div className="heading">
+                <p className="heading-text">CONVERT</p>
+                <p className="subheading-text">UNITS ONLY</p>
                 <IconButton onClick={handleOpen}>
                     <InfoIcon />
                 </IconButton>
             </div>
-            <div class="wrapper">
+            <div className="wrapper">
                 <StyledTextField
                     id="outlined-textarea"
                     label="ENTER A NUMBER"
@@ -118,7 +118,7 @@ function Home() {
                     onChange={e => setNum(e.target.value.replace(/\s/g, ''))}
                     variant="outlined"
                 />
-                {num === '' ? <h1></h1> : isNaN(num) ? <ErrorScreen /> : <Conversions />}
+                {num === '' ? <h1></h1> : isNaN(num) ? <ErrorScreen /> : <Conversions number={num}/>}
             </div>
             <Modal
                 aria-labelledby="spring-modal-title"
