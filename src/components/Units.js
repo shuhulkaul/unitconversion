@@ -5,7 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import IconButton from '@material-ui/core/IconButton';
+import formula from './Formula.js'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 let length = [
-    { id: 0, name: "Micons", symbol: "μm" },
+    { id: 0, name: "Microns", symbol: "μm" },
     { id: 1, name: "Millimeter", symbol: "mm" },
     { id: 2, name: "Centimeters", symbol: "cm" },
     { id: 3, name: "Meters", symbol: "m" },
@@ -182,9 +182,10 @@ export default function Units(props) {
 
     const changeResult = (event, index, id) => {
         changeResultState(index);
-        console.log(id + " " + props.index);
+        changeSelectedUnitState(id);
     };
     const [result, changeResultState] = React.useState(0);
+    const [selectedUnit, changeSelectedUnitState] = React.useState('');
     // const currentData = length[props.index];
     return (
         <div className={classes.root}>
@@ -215,21 +216,37 @@ export default function Units(props) {
                 }
 
 
-                {data.map((item) =>
+                {result ? data.map((item) =>
                     <ListItem
                         button
                         key={item.id}
-                        onClick={(event) => changeResult(event, 1, item.id)}
-                        onLoad={console.log("hi")}
+                        // onClick={(event) => changeResult(event, 1, item.id)}
+                    // onLoad={console.log("hi")}
                     >
                         <ListItemIcon >
                             {item.symbol}
                         </ListItemIcon>
-                        {result ?
-                            <ListItemText style={{ textAlign: "right" }} primary={props.numberT} secondary={item.name} />
-                            : <ListItemText style={{ textAlign: "right" }} secondary={item.name} />
-                        }
-                    </ListItem>)}
+
+                        <ListItemText style={{ textAlign: "right" }} primary={formula(props.index, item.id, props.numberT, selectedUnit)} secondary={item.name} />
+
+
+                    </ListItem>)
+                    : data.map((item) =>
+                        <ListItem
+                            button
+                            key={item.id}
+                            onClick={(event) => changeResult(event, 1, item.id)}
+                        // onLoad={console.log("hi")}
+                        >
+                            <ListItemIcon >
+                                {item.symbol}
+                            </ListItemIcon>
+
+                            <ListItemText style={{ textAlign: "right" }} secondary={item.name} />
+
+
+                        </ListItem>)
+                }
             </List>
         </div>
     );
