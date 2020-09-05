@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Home from './components/Home.js'
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Home from "./components/Home.js";
 
 function App() {
-  return (
-    <Home />
-  );
+  return <Home />;
 }
 
 export default App;
