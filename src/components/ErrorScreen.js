@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React from "react";
 import "./css/style.scss";
 import Alert from "@material-ui/lab/Alert";
 

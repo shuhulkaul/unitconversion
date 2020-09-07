@@ -82,7 +82,7 @@ export default function Conversions(props) {
 
         <ListItem button onClick={(event) => handleListItemClick(event, 10)}>
           <ListItemIcon>11</ListItemIcon>
-          <ListItemText secondary="Temprature" />
+          <ListItemText secondary="Temperature" />
         </ListItem>
 
         <ListItem button onClick={(event) => handleListItemClick(event, 11)}>

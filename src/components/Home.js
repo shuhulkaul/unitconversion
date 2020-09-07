@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 import "./css/style.scss";
 import Conversions from "./Conversions.js";
 import ErrorScreen from "./ErrorScreen.js";
@@ -13,9 +13,7 @@ import { useSpring, animated } from "react-spring/web.cjs"; // web.cjs is requir
 import TwitterIcon from "@material-ui/icons/Twitter";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import ShortTextTwoToneIcon from "@material-ui/icons/ShortTextTwoTone";
-import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
+
 
 // const useStyles = makeStyles({
 //     root: {
@@ -76,11 +74,11 @@ const StyledTextField = withStyles({
   root: {
     width: 300,
   },
-  label: {
-    color: "white",
-    letterSpacing: 20,
-    textTransform: "capitalize",
-  },
+  // label: {
+  //   color: "white",
+  //   letterSpacing: 20,
+  //   textTransform: "capitalize",
+  // },
 })(TextField);
 
 function Home() {
@@ -121,7 +119,7 @@ function Home() {
           variant="outlined"
         />
         {num === "" ? (
-          <h1></h1>
+          null
         ) : isNaN(num) ? (
           <ErrorScreen />
         ) : (

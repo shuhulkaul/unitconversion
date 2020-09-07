@@ -7,7 +7,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import formula from "./Formula.js";
 import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/Delete";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 
 const useStyles = makeStyles((theme) => ({
@@ -135,7 +134,7 @@ let power = [
   { id: 5, name: "Horsepower (mech)", symbol: "hp(I)" },
   { id: 6, name: "Horsepower (metric)", symbol: "hp(M)" },
 ];
-let temprature = [
+let temperature = [
   { id: 0, name: "Celsius", symbol: "°C" },
   { id: 1, name: "Fahrenheit", symbol: "°F" },
   { id: 2, name: "Kelvin", symbol: " K" },
@@ -186,7 +185,7 @@ export default function Units(props) {
       data = power;
       break;
     case 10:
-      data = temprature;
+      data = temperature;
       break;
     case 11:
       data = dataSize;
@@ -199,7 +198,6 @@ export default function Units(props) {
     changeResultState(index);
     changeSelectedUnitState(id);
   };
-
   const [view, setView] = React.useState(false);
   const handleChange = () => {
     setView(!view);
@@ -218,7 +216,12 @@ export default function Units(props) {
             </ListItemIcon>
 
             <ListItemText
-              style={{ color: "#ee6f57", fontWeight: 'bold', textDecorationLine: 'underline', textAlign: "center" }}
+              style={{
+                color: "#ee6f57",
+                fontWeight: "bold",
+                textDecorationLine: "underline",
+                textAlign: "center",
+              }}
               primary="To Unit"
             />
             <ListItemSecondaryAction onClick={handleChange}>
@@ -228,38 +231,55 @@ export default function Units(props) {
             </ListItemSecondaryAction>
           </ListItem>
         ) : (
-          <ListItem button onClick={props.goBack}>
+          <ListItem button>
             <ListItemIcon>
-              <ArrowBackIcon onClick={(event) => changeResult(event, 0, "")} />
+              <ArrowBackIcon
+                onClick={((event) => changeResult(event, 0, ""), props.goBack)}
+              />
             </ListItemIcon>
             <ListItemText
-              style={{ color: "#ee6f57", fontWeight: 'bold', textDecorationLine: 'underline', textAlign: "center" }}
+              style={{
+                color: "#ee6f57",
+                fontWeight: "bold",
+                textDecorationLine: "underline",
+                textAlign: "center",
+              }}
               primary="From Unit"
             />
             <ListItemSecondaryAction onClick={handleChange}>
-              <IconButton edge="end" aria-label="delete">
+              <IconButton edge="end" aria-label="e">
                 <ul>{view ? <i>e</i> : <b>e</b>}</ul>
               </IconButton>
             </ListItemSecondaryAction>
           </ListItem>
         )}
-        {props.index === 11 ? <ListItem><ListItemText style={{fontStyle:'italic'}} secondary='Data-size units follow the IEC standard, where kibi-, mebi- and gibi- etc are multiples of 1024 and kilo-, mega-, giga- etc are multiples of 1000.' /></ListItem> : null}
+        {props.index === 11 ? (
+          <ListItem>
+            <ListItemText
+              style={{ fontStyle: "italic" }}
+              secondary="Data-size units follow the IEC standard, where kibi-, mebi- and gibi- etc are multiples of 1024 and kilo-, mega-, giga- etc are multiples of 1000."
+            />
+          </ListItem>
+        ) : null}
         {result
           ? data.map((item) => (
               <ListItem
                 button
+                autoFocus
                 key={item.id}
                 // onClick={(event) => changeResult(event, 1, item.id)}
-                // onLoad={console.log("hi")}
               >
                 {item.id === selectedUnit ? (
                   <ListItemIcon style={{ color: "red", fontWeight: "bold" }}>
                     {item.symbol}
                   </ListItemIcon>
                 ) : (
-                  <ListItemIcon>{item.symbol}</ListItemIcon>
+                  <ListItemIcon>
+                    {item.symbol}
+                  </ListItemIcon>
                 )}
                 <ListItemText
+                  
                   style={{ textAlign: "right" }}
                   primary={formula(
                     props.index,
@@ -268,15 +288,16 @@ export default function Units(props) {
                     selectedUnit,
                     view
                   )}
+                  
                 />
               </ListItem>
             ))
           : data.map((item) => (
               <ListItem
+                autoFocus
                 button
                 key={item.id}
-                onClick={(event) => changeResult(event, 1, item.id)}
-                // onLoad={console.log("hi")}
+                onClick={(event) =>  changeResult(event, 1, item.id)}
               >
                 <ListItemIcon>{item.symbol}</ListItemIcon>
 

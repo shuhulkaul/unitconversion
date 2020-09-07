@@ -1085,7 +1085,7 @@ var formula = function (type, unit, value, selectedUnit, mode) {
       break;
   }
   if (selectedUnit === unit) {
-    result = Math.round(value);
+    result = value;
   }
   if (mode) {
     if(result < 1)
