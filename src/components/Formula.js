@@ -1088,10 +1088,13 @@ var formula = function (type, unit, value, selectedUnit, mode) {
     result = value;
   }
   if (mode) {
-    if(result < 1)
-    return result.toFixed(23);
-    else
-    return result.toLocaleString('en');
+    if (result < 1 && selectedUnit !== unit ) {
+      console.log("hi");
+      return result.toFixed(23);
+      
+    }
+    else 
+    return result.toLocaleString("en");
   } else {
     return result;
   }
