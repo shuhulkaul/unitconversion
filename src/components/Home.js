@@ -104,6 +104,7 @@ function Home() {
         <IconButton onClick={handleOpen}>
           <InfoIcon />
         </IconButton>
+<div><a href="https://github.com/shuhulkaul/unit-conversion-pkg">NPM</a><a href="https://github.com/shuhulkaul/unitconversionAPI">API</a></div>
       </div>
       <div className="wrapper">
         <StyledTextField
